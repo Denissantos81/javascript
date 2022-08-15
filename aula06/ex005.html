@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primeiros Passos No DOM</title>
+    <style>/*titulo principal e fundo da imagem*/
+        body{
+            background: aqua;
+            color: darkblue;
+            font: normal 15pt Verdana; 
+        }
+        /*titulo principal*/
+        h1{
+            background-color: rgba(117, 179, 236, 0.61);
+            width: auto;
+            
+        }
+    </style>
+</head>
+<body>
+    <h1><center>INICIANDO ESTUDOS COM O DOM</center></h1>
+    <p>Viu o resultado</p>
+    <p>Aprendendo a usar o <strong> DOM</strong> no java script</p>
+    <div>Click em mim agora</div> 
+    <script>
+        var corpo = window.document.body
+        var p1 = window.document.getElementsByTagName('p')[0]
+        window.document.write("teste: " +  p1.innerText)
+        corpo.style.background ='white'
+    </script>  
+</body>
+</html>
