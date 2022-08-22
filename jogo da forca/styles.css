@@ -4,19 +4,21 @@
     box-sizing: border-box;
   }
   body {
-    height: 110vh;
-    display: flex;
+    height: 120vh;
     background-image:linear-gradient(to bottom,rgb(111, 111, 243),rgb(16, 16, 196));
+    display: flex;
+  
   }
 
-   .memory-card:active {
+   .carta:active {
      transform: scale(0.97);
-     transition: transform .2s;
+     transition: transform .2
+     s;
    }
-   .memory-card.flip {
+   .carta.flip {
     transform: rotateY(180deg);
   }
-  .memory-game {
+  .jogo-memoria {
     width: 640px;
     height: 640px;
     margin: auto;
@@ -25,7 +27,7 @@
    perspective: 10000px;
   }
  
-  .memory-card {
+  .carta {
     width: calc(25% - 10px);
     height: calc(33.333% - 10px);
     margin: 5px;
@@ -57,6 +59,16 @@ h1{
     padding-left: 33px;
     padding-right: 33px;
     background-image:linear-gradient(to left,rgb(26, 173, 241),rgb(130, 187, 240));
-    color: rgb(253, 51, 0);
+    color: rgb(63, 35, 28);
     border-radius: 15px;
+}
+input{
+  background-color: rgb(64, 64, 243);
+  text-align: center;
+  color: azure;
+  height: 30px;
+  width: 100px;
+  margin-top: 50px;
+  margin-left: 46%;
+  position: absolute;
 }
