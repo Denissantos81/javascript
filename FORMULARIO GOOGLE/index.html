@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+</head>
+
+<body>
+    <form name="submit-to-google-sheet">
+        <input name="nome" type="text" placeholder="Nome" required>
+        <input name="email" type="email" placeholder="Email">
+        <input name="mensagem" type="text" placeholder="Mensagem">
+        <input name="telefone" type="number" placeholder="Telefone">
+
+
+        <select name="time">
+            <option value="atletico">Atletico</option>
+            <option value="america">America</option>
+            <option value="vilanova">Vilanova</option>
+            <option value="cruzeiro">Cruzeiro</option>
+        </select>
+
+
+        <input name="brinde" type="checkbox" value="sim" id="brinde">
+        <label name="brinde" for="brinde">
+            Camisa do time
+        </label>
+
+
+        <input name="brinde2" type="checkbox" value="sim" id="brinde2">
+        <label name="brinde2" for="brinde2">
+            Ingresso  Vip
+        </label>
+
+        <input name="pesquisa-sim" type="radio" value="sim" id="pesquisa-sim">
+        <label name="pesquisa-sim" for="pesquisa-sim">
+         Já fui ao mineirão
+         </label>
+         <input name="pesquisa-nao" type="radio" value="não" id="pesquisa-nao">
+        <label name="pesquisa-nao" for="pesquisa-nao">
+         Não fui ao mineirão
+         </label>
+
+
+        <input name="vezes" type="checkbox" id="inlineCheckbox1" value="1a3">
+        <label name="vezes" for="inlineCheckbox1">1 a 3vezes</label>
+        <input name="vezes" type="checkbox" id="inlineCheckbox1" value="3a10">
+        <label name="vezes" for="inlineCheckbox1">3a10vezes</label>
+        <input name="vezes" type="checkbox" id="inlineCheckbox1" value=">10">
+        <label name="vezes" for="inlineCheckbox1">Acima de 10</label>
+
+
+        <button type="submit">Cadastre</button>
+
+
+    </form>
+
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbw_pSwTuNsEC8pF34dYaj_sBKprKEWUb4BxSBveUP98cL7WdnM_h-RZgkc8AHgFWatr8w/exec'
+        const form = document.forms['submit-to-google-sheet']
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => console.log('Success!', response))
+                .catch(error => console.error('Error!', error.message))
+            form.reset();
+        })
+    </script>
+
+
+    <!--
+        var sheetName = 'Sheet1'
+var scriptProp = PropertiesService.getScriptProperties()
+
+function intialSetup () {
+  var activeSpreadsheet = SpreadsheetApp.getActiveSpreadsheet()
+  scriptProp.setProperty('key', activeSpreadsheet.getId())
+}
+
+function doPost (e) {
+  var lock = LockService.getScriptLock()
+  lock.tryLock(10000)
+
+  try {
+    var doc = SpreadsheetApp.openById(scriptProp.getProperty('key'))
+    var sheet = doc.getSheetByName(sheetName)
+
+    var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0]
+    var nextRow = sheet.getLastRow() + 1
+
+    var newRow = headers.map(function(header) {
+      return header === 'timestamp' ? new Date() : e.parameter[header]
+    })
+
+    sheet.getRange(nextRow, 1, 1, newRow.length).setValues([newRow])
+
+    return ContentService
+      .createTextOutput(JSON.stringify({ 'result': 'success', 'row': nextRow }))
+      .setMimeType(ContentService.MimeType.JSON)
+  }
+
+  catch (e) {
+    return ContentService
+      .createTextOutput(JSON.stringify({ 'result': 'error', 'error': e }))
+      .setMimeType(ContentService.MimeType.JSON)
+  }
+
+  finally {
+    lock.releaseLock()
+  }
+}
+
+
+      -->
+
+</body>
+
+</html>

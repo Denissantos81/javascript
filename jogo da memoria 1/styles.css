@@ -4,7 +4,7 @@
     box-sizing: border-box;
   }
   body {
-    height: 120vh;
+    height: 115vh;
     background-image:linear-gradient(to bottom,rgb(111, 111, 243),rgb(16, 16, 196));
     display: flex;
   
@@ -68,7 +68,8 @@ input{
   color: azure;
   height: 30px;
   width: 100px;
-  margin-top: 50px;
+  margin-top: 10px;
   margin-left: 46%;
   position: absolute;
+  border-radius: 15px;
 }
